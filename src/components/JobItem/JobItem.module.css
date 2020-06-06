@@ -1,0 +1,15 @@
+.img {
+    max-width: 100%;
+}
+
+.jobItem {
+    background-color: #e5e3ff;
+}
+
+.positionTitle {
+    color: #3a28ff;
+}
+
+.closeDate {
+    color: #e53935;
+}

@@ -1,12 +1,13 @@
 import React from 'react';
 import { fetchAPI } from './api';
 import './App.css';
-import { JobContainer, JobItem } from './components';
+import { JobContainer } from './components';
+import { debounce } from "lodash";
 
 class App extends React.Component {
   state = {
     data: {},
-    country: '',
+    // country: '',
   }
   
   async componentDidMount() {
@@ -15,15 +16,19 @@ class App extends React.Component {
     this.setState({ data });
   }
   
+  handleSearchValue = async (searchValue) => {
+    setTimeout(300);
+    const data = await fetchAPI(searchValue);
 
+    this.setState({ data });
+    console.log('SHow');
+  };
 
   render () {
-    const { data, country } = this.state;
+    const { data } = this.state;
     return (
       <div className="App">
-        <JobContainer data={ data }>
-          
-        </JobContainer>
+        <JobContainer data={ data } handleSearchValue={this.handleSearchValue} />
       </div>
     );
   }
