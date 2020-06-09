@@ -1,8 +1,7 @@
 import React from 'react';
 import { fetchAPI } from './api';
 import './App.css';
-import { JobContainer } from './components';
-import { debounce } from "lodash";
+import { JobContainer, Header } from './components';
 
 class App extends React.Component {
   state = {
@@ -17,7 +16,7 @@ class App extends React.Component {
   }
   
   handleSearchValue = async (searchValue) => {
-    setTimeout(300);
+    // setTimeout(300);
     const data = await fetchAPI(searchValue);
 
     this.setState({ data });
@@ -28,7 +27,8 @@ class App extends React.Component {
     const { data } = this.state;
     return (
       <div className="App">
-        <JobContainer data={ data } handleSearchValue={this.handleSearchValue} />
+        <Header handleSearchValue={this.handleSearchValue} />
+        <JobContainer data={ data } />
       </div>
     );
   }
